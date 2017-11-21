@@ -1,4 +1,0 @@
-sceneSetups:
-- path: Assets/RenzeTD/Scenes/Map.unity
-  isLoaded: 1
-  isActive: 1
