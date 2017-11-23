@@ -35,6 +35,7 @@ namespace RenzeTD.Scripts.Level.Map {
         private SpriteRenderer Renderer => GetComponent<SpriteRenderer>();
         
         private void Start() {
+            tag = "Tile";
             UpdateSprite();
         }
 

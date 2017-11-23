@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using RenzeTD.Scripts.Level.Map;
+using RenzeTD.Scripts.Level.Map.Pathing;
 using RenzeTD.Scripts.Misc;
 using UnityEngine;
 
@@ -11,6 +13,11 @@ namespace RenzeTD.Scripts.Level {
 	[DataContract]
 	public class MapData : MonoBehaviour {
 
+		public enum Side {
+			Top, Bottom,
+			Left, Right
+		}
+		
 		public Tuple<bool, FileInfo> isLoading { get; set; } = new Tuple<bool, FileInfo>(true, new FileInfo("json.json"));
 		//Grid Specifications
 		[DataMember]
@@ -21,11 +28,14 @@ namespace RenzeTD.Scripts.Level {
 		public Vector2 GridOffset;
 		[DataMember]
 		public CellHolder CellHolder;
+		[DataMember]
+		public Side StartsFrom = Side.Top;
+		[DataMember]
+		public Side EndsOn = Side.Bottom;
 		
 		public Vector2 GridSize => new Vector2(Rows, Columns);
 		public Vector2 CellSize => new Vector2(GridSize.x/Columns, GridSize.y/Rows);
-		
-		
+			
 		// Use this for initialization
 		void Start () {
 			Directory.CreateDirectory(Settings.Level.MapLocation);
@@ -34,15 +44,11 @@ namespace RenzeTD.Scripts.Level {
 				LoadMap(isLoading.Item2);
 			}
 		}
-	
-		// Update is called once per frame
-		void Update () {
-		
-		}
 
 		void InitCells() {
 			GameObject CellObject = new GameObject();
 			CellObject.AddComponent<Cell>();
+			CellObject.AddComponent<Node>();
 
 			CellHolder = new CellHolder(Rows, Columns);
 
@@ -87,6 +93,24 @@ namespace RenzeTD.Scripts.Level {
 			}
 			
 			Destroy(CellObject);
+		}
+
+		public void InitNodes() {
+			Node n = null;
+			for (int i = 0; i < Rows; i++) {
+				for (int j = 0; j < Columns; j++) {
+					if (n != null) {
+						break;
+					}
+					var node = CellHolder.Holder[i].Objects[j].GetComponent<Node>();
+					n = node.Value == 0 ? node : null;
+				}
+				if (n != null) {
+					break;
+				}
+			}
+			
+			n.SetValue();
 		}
 
 		public void SaveMap(string name) {

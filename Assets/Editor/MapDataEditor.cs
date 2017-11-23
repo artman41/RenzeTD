@@ -1,4 +1,6 @@
-﻿using RenzeTD.Scripts.Level;
+﻿using System;
+using System.Linq;
+using RenzeTD.Scripts.Level;
 using RenzeTD.Scripts.Level.Map;
 using UnityEditor;
 using UnityEngine;
@@ -22,7 +24,15 @@ namespace Editor {
             serializedObject.ApplyModifiedProperties();
 
             md.name = EditorGUILayout.TextField("Map Name", md.name);
-
+            var start = (MapData.Side)EditorGUILayout.EnumPopup("Enemy Start", md.StartsFrom);
+            if (md.EndsOn != start) {
+                md.StartsFrom = start;
+            }
+            var end = (MapData.Side) EditorGUILayout.EnumPopup("Enemy End", md.EndsOn);
+            if (md.StartsFrom != end) {
+                md.EndsOn = end;
+            }
+            
             if (GUILayout.Button("Save Map")) {
                 md.SaveMap(name);
             }
