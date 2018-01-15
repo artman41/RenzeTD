@@ -1,0 +1,291 @@
+{
+  "Rows": 9,
+  "Columns": 9,
+  "GridOffset": {
+    "x": 0.0,
+    "y": 0.0
+  },
+  "CellHolder": {
+    "Holder": [
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 3
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 3
+          },
+          {
+            "_CellType": 1
+          },
+          {
+            "_CellType": 6
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 9
+          },
+          {
+            "_CellType": 8
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 8
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 1
+          },
+          {
+            "_CellType": 5
+          },
+          {
+            "_CellType": 9
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 3
+          },
+          {
+            "_CellType": 1
+          },
+          {
+            "_CellType": 6
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 8
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 9
+          },
+          {
+            "_CellType": 8
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 8
+          },
+          {
+            "_CellType": 9
+          },
+          {
+            "_CellType": 2
+          },
+          {
+            "_CellType": 1
+          },
+          {
+            "_CellType": 5
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 2
+          },
+          {
+            "_CellType": 5
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 9
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          }
+        ]
+      },
+      {
+        "Cells": [
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          },
+          {
+            "_CellType": 0
+          }
+        ]
+      }
+    ]
+  }
+}

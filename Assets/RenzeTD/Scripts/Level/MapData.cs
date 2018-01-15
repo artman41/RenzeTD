@@ -18,7 +18,7 @@ namespace RenzeTD.Scripts.Level {
 			Left, Right
 		}
 		
-		public Tuple<bool, FileInfo> isLoading { get; set; } = new Tuple<bool, FileInfo>(true, new FileInfo("json.json"));
+		public Tuple<bool, FileInfo> isLoading { get; set; } = new Tuple<bool, FileInfo>(true, new FileInfo($"{Settings.Instance.MapDirLocation}map.json"));
 		//Grid Specifications
 		[DataMember]
 		public int Rows;
@@ -38,7 +38,7 @@ namespace RenzeTD.Scripts.Level {
 			
 		// Use this for initialization
 		void Start () {
-			Directory.CreateDirectory(Settings.Level.MapLocation);
+			Directory.CreateDirectory(Settings.Instance.MapDirLocation);
 			InitCells();
 			if (isLoading.Item1) {
 				LoadMap(isLoading.Item2);
@@ -108,14 +108,14 @@ namespace RenzeTD.Scripts.Level {
 				if (n != null) {
 					break;
 				}
-			}
-			
-			n.SetValue();
+			} //iterates through each node top to bottom until it reaches the start node
+
+			n?.SetValue();
 		}
 
 		public void SaveMap(string name) {
 			string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-			using (var f = new StreamWriter($"{Settings.Level.MapLocation}{name}/map.json")) {
+			using (var f = new StreamWriter($"{Settings.Instance.MapDirLocation}{name}/map.json")) {
 				f.Write(json);
 			}
 			

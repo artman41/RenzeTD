@@ -1,0 +1,5 @@
+{
+  "TileLocation": "Game/Tiles/",
+  "MapDirLocation": "Game/Maps/",
+  "EnemyLocation": "Game/Settings/"
+}

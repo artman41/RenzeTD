@@ -61,25 +61,25 @@ namespace RenzeTD.Scripts.Level.Map {
         public static Sprite GetSprite(Cell.Type t) {
             switch (t) {
                 case Cell.Type.UpDown:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Up-Down");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Up-Down");
                 case Cell.Type.UpLeft:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Up-Left");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Up-Left");
                 case Cell.Type.UpRight:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Up-Right");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Up-Right");
                 case Cell.Type.UpTJunc:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Up-TJunc");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Up-TJunc");
                 case Cell.Type.DownLeft:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Down-Left");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Down-Left");
                 case Cell.Type.DownRight:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Down-Right");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Down-Right");
                 case Cell.Type.DownTJunc:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Down-TJunc");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Down-TJunc");
                 case Cell.Type.LeftRight:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Left-Right");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Left-Right");
                 case Cell.Type.Turret:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Turret");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Turret");
                 case Cell.Type.Empty:
-                    return Resources.Load<Sprite>(Settings.Level.TileLocation + "Empty");
+                    return Resources.Load<Sprite>(Settings.Instance.TileLocation + "Tile_Empty");
                 default:
                     throw new Exception("Unhandled Tile Type");
             }
@@ -106,7 +106,9 @@ namespace RenzeTD.Scripts.Level.Map {
         [DataMember]
         public CellArray[] Holder;
         [SerializeField]
+        #pragma warning disable 0414
         private int items = 0;
+        #pragma warning restore 0414
         
         public CellHolder(int x, int y) {
             Holder = new CellArray[x];
