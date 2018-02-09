@@ -13,6 +13,7 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
         public bool isStart;
         public bool isEnd;
         public int Value = -1;
+        public Cell.Type CellType;
 
         private int[] CellLoc {
             get {
@@ -58,7 +59,8 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
         }
 
         private void Start() {
-            if (GetComponent<Cell>().CellType == Cell.Type.Empty || GetComponent<Cell>().CellType == Cell.Type.Turret) {
+            CellType = GetComponent<Cell>().CellType;
+            if (CellType == Cell.Type.Empty || CellType == Cell.Type.Turret) {
                 return;
             }
 
@@ -182,15 +184,15 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
             
             if (ConnectedNodes.Count != 0) {
                 Value = prev != null ? prev.Value + 1 : 0;
-            }
-            var unset = ConnectedNodes.Where(o => o.Value < 0).ToArray();
+            };
+            var unset = ConnectedNodes.Where(o=> o != prev).Where(o => o.Value < 0 || (o.CellType == Cell.Type.DownTJunc && CellLoc != new []{o.CellLoc[0] + o.PossibleLocations()[2][0], o.CellLoc[1] + o.PossibleLocations()[2][1]})).ToArray(); //Done so on any loops past a T-Junc it will reset the value to a greater one
             
             if (unset.Length > 1) {
                 if (GetComponent<Cell>().CellType != Cell.Type.DownTJunc) {
                     //BRANCH
                     Parallel.ForEach(unset, (n) => { n.SetValue(); });
                 } else {
-                    Debug.Log($"[{CellLoc[0]+ PossibleLocations()[2][0]},{CellLoc[1]+ PossibleLocations()[2][1]}]");
+                    //Debug.Log($"[{CellLoc[0]+ PossibleLocations()[2][0]},{CellLoc[1]+ PossibleLocations()[2][1]}]");
                     var next = ConnectedNodes.First(o => o.name.Contains($"[{CellLoc[0]+ PossibleLocations()[2][0]},{CellLoc[1]+ PossibleLocations()[2][1]}]"));
                     try {
                         next?.SetValue();
