@@ -190,7 +190,8 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
             if (unset.Length > 1) {
                 if (GetComponent<Cell>().CellType != Cell.Type.DownTJunc) {
                     //BRANCH
-                    Parallel.ForEach(unset, (n) => { n.SetValue(); });
+                   // Parallel.ForEach(unset, (n) => { n.SetValue(); });
+                    //TODO: FIX PARALLEL
                 } else {
                     //Debug.Log($"[{CellLoc[0]+ PossibleLocations()[2][0]},{CellLoc[1]+ PossibleLocations()[2][1]}]");
                     var next = ConnectedNodes.First(o => o.name.Contains($"[{CellLoc[0]+ PossibleLocations()[2][0]},{CellLoc[1]+ PossibleLocations()[2][1]}]"));
@@ -201,7 +202,7 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
                     }
                 }
             } else {
-                var next = unset[0];
+                var next = unset.Length != 0 ? unset[0] : null;
                 
                 try {
                     next?.SetValue();

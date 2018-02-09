@@ -34,7 +34,7 @@ namespace Editor {
             }
             
             if (GUILayout.Button("Save Map")) {
-                md.SaveMap(name);
+                md.SaveMap(md.name);
             }
 
         }

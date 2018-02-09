@@ -18,7 +18,7 @@ namespace RenzeTD.Scripts.Level {
 			Left, Right
 		}
 		
-		public Tuple<bool, FileInfo> isLoading { get; set; } = new Tuple<bool, FileInfo>(true, new FileInfo($"{Settings.Instance.MapDirLocation}map.json"));
+		public Tuple<bool, FileInfo> isLoading { get; set; } = new Tuple<bool, FileInfo>(true, new FileInfo($"{Settings.Instance.MapDirLocation}/The_Path/map.json"));
 		//Grid Specifications
 		[DataMember]
 		public int Rows;
@@ -114,11 +114,35 @@ namespace RenzeTD.Scripts.Level {
 		}
 
 		public void SaveMap(string name) {
+			name = name.Replace(" ", "_");
 			string json = JsonConvert.SerializeObject(this, Formatting.Indented);
 			using (var f = new StreamWriter($"{Settings.Instance.MapDirLocation}{name}/map.json")) {
 				f.Write(json);
 			}
+
+			File.WriteAllBytes($"{Settings.Instance.MapDirLocation}{name}/map.png", GetPicture());
+		}
+
+		byte[] GetPicture() {
+			var cellSprite = CellHolder.Holder[0].Cells[0].GetComponent<SpriteRenderer>().sprite;
+			int width = Rows * cellSprite.texture.width;
+			int height = Columns * cellSprite.texture.height;
+			Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, false);
 			
+			for (int x = 0; x < CellHolder.Holder.Length; x++) {
+				for (int y = 0; y < CellHolder.Holder[x].Cells.Count; y++) {
+					var cell = CellHolder.Holder[x].Cells[y].GetComponent<SpriteRenderer>().sprite.texture;
+					var pixels = new Color[cellSprite.texture.width, cellSprite.texture.height];
+					for (int i = 0; i < cell.width; i++) {
+						for (int j = 0; j < cell.height; j++) {
+							tex.SetPixel(x*cellSprite.texture.width + i, y*cellSprite.texture.width + j, cell.GetPixel(i, j));
+						}
+					}
+					tex.Apply();
+				}
+			}
+
+			return tex.EncodeToPNG();
 		}
 
 		void LoadMap(FileInfo Map) {
