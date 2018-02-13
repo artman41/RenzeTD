@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using NUnit.Framework;
 using RenzeTD.Scripts.Misc;
 using UnityEngine;
-using UnityEngine.WSA;
 
 namespace RenzeTD.Scripts.Level.Map {
     [RequireComponent(typeof(SpriteRenderer))]
