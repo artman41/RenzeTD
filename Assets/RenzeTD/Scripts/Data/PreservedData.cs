@@ -1,17 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using RenzeTD.Scripts.Misc;
 using RenzeTD.Scripts.Selection;
 using UnityEngine;
 
 namespace RenzeTD.Scripts.Data {
+    [ExecuteInEditMode]
     public class PreservedData : MonoBehaviour {
         public List<Map> AvailableMaps = new List<Map>();
 
         public Map SelectedMap;
-        
+
         void Awake() {
-            DontDestroyOnLoad(transform.gameObject);
+            try {
+                DontDestroyOnLoad(transform.gameObject);
+            } catch (InvalidOperationException e) {
+                
+            }
         }
 
         void Start() {

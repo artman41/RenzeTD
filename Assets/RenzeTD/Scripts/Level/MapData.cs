@@ -143,7 +143,7 @@ namespace RenzeTD.Scripts.Level {
 			}
 
 			return tex.EncodeToPNG();
-		}
+		} //stitches map into a png
 
 		void LoadMap(FileInfo Map) {
 			var x = JsonConvert.DeserializeObject<MapData>(File.ReadAllText(Map.FullName));
