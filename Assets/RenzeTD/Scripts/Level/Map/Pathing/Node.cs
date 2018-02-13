@@ -180,11 +180,12 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
         }
 
         public void SetValue() {
-            var prev = ConnectedNodes.OrderByDescending(o => o.Value).First(o => isStart || o.Value != -1 && o.Value > -1);
+            var nodes = ConnectedNodes.OrderByDescending(o => o.Value);
+            var prev = nodes.FirstOrDefault(o => o.isStart || o.Value > -1);
             
             if (ConnectedNodes.Count != 0) {
                 Value = prev != null ? prev.Value + 1 : 0;
-            };
+            }
             var unset = ConnectedNodes.Where(o=> o != prev).Where(o => o.Value < 0 || (o.CellType == Cell.Type.DownTJunc && CellLoc != new []{o.CellLoc[0] + o.PossibleLocations()[2][0], o.CellLoc[1] + o.PossibleLocations()[2][1]})).ToArray(); //Done so on any loops past a T-Junc it will reset the value to a greater one
             
             if (unset.Length > 1) {
