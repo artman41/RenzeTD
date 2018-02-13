@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
+using RenzeTD.Scripts.Data;
 using RenzeTD.Scripts.Level.Map;
 using RenzeTD.Scripts.Level.Map.Pathing;
 using RenzeTD.Scripts.Misc;
@@ -18,7 +19,6 @@ namespace RenzeTD.Scripts.Level {
 			Left, Right
 		}
 		
-		public Tuple<bool, FileInfo> isLoading { get; set; } = new Tuple<bool, FileInfo>(true, new FileInfo($"{Settings.Instance.MapDirLocation}/The_Path/map.json"));
 		//Grid Specifications
 		[DataMember]
 		public int Rows;
@@ -35,14 +35,14 @@ namespace RenzeTD.Scripts.Level {
 		
 		public Vector2 GridSize => new Vector2(Rows, Columns);
 		public Vector2 CellSize => new Vector2(GridSize.x/Columns, GridSize.y/Rows);
-			
+
+		private PreservedData pd;
+		
 		// Use this for initialization
 		void Start () {
-			Directory.CreateDirectory(Settings.Instance.MapDirLocation);
+			pd = FindObjectOfType<PreservedData>();
 			InitCells();
-			if (isLoading.Item1) {
-				LoadMap(isLoading.Item2);
-			}
+			LoadMap(pd.SelectedMap.File);
 		}
 
 		void InitCells() {
