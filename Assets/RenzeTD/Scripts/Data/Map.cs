@@ -3,14 +3,14 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 
-namespace RenzeTD.Scripts.Selection {
+namespace RenzeTD.Scripts.Data {
     [Serializable]
     public class Map {
         public string Name;
         
         [SerializeField]
         private Texture2D _coverImage;
-        
+
         public FileInfo File { get; set; }
 
         public Texture2D CoverImage {

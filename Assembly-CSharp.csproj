@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{897A21E1-8A72-D8AC-F061-4B8B0B709696}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -52,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\RenzeTD\Scripts\Data\EnemyData.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Data\Map.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Data\Player.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Data\PreservedData.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Data\World.cs" />
@@ -62,9 +64,10 @@
     <Compile Include="Assets\RenzeTD\Scripts\Menu\Buttons.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Menu\MapCycle.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Misc\LinqExtensions.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Misc\SceneChanger.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Misc\Settings.cs" />
-    <Compile Include="Assets\RenzeTD\Scripts\Selection\Map.cs" />
-    <Compile Include="Assets\RenzeTD\Scripts\Selection\MapCollection.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Selection\TileHolder.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Selection\TileHolderManager.cs" />
     <None Include="Assets\JsonDotNet\link.xml" />
     <Reference Include="Facebook.Unity.Settings">
       <HintPath>C:/Users/Tyler/Documents/Game Files/RenzeTD/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>

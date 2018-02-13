@@ -27,6 +27,7 @@
           <e p="Scripts" t="Include">
             <e p="Data" t="Include">
               <e p="EnemyData.cs" t="Include" />
+              <e p="Map.cs" t="Include" />
               <e p="Player.cs" t="Include" />
               <e p="PreservedData.cs" t="Include" />
               <e p="World.cs" t="Include" />
@@ -47,11 +48,12 @@
             </e>
             <e p="Misc" t="Include">
               <e p="LinqExtensions.cs" t="Include" />
+              <e p="SceneChanger.cs" t="Include" />
               <e p="Settings.cs" t="Include" />
             </e>
             <e p="Selection" t="Include">
-              <e p="Map.cs" t="Include" />
-              <e p="MapCollection.cs" t="Include" />
+              <e p="TileHolder.cs" t="Include" />
+              <e p="TileHolderManager.cs" t="Include" />
             </e>
           </e>
         </e>

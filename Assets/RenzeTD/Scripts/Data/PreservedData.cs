@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using RenzeTD.Scripts.Misc;
 using RenzeTD.Scripts.Selection;
 using UnityEngine;
@@ -21,6 +22,9 @@ namespace RenzeTD.Scripts.Data {
         }
 
         void Start() {
+            if (AvailableMaps.Any()) {
+                AvailableMaps.Clear();
+            }
             Directory.CreateDirectory(Settings.Instance.MapDirLocation);
             InitMaps();
         }

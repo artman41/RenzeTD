@@ -49,6 +49,7 @@ namespace RenzeTD.Scripts.Level {
 			GameObject CellObject = new GameObject();
 			CellObject.AddComponent<Cell>();
 			CellObject.AddComponent<Node>();
+			CellObject.AddComponent<RectTransform>();
 
 			CellHolder = new CellHolder(Rows, Columns);
 
@@ -57,25 +58,7 @@ namespace RenzeTD.Scripts.Level {
 			var positions = new Vector2[Rows,Columns];
 			for (int i = 0; i < positions.GetLength(0); i++) {
 				for (int j = 0; j < positions.GetLength(1); j++) {
-					var x = new Vector2(0, 0);
-					if(j < (j/2)+0.5){
-						x.y = -1f + j;
-					} else if ((j / 2) + 0.5 < j) {
-						x.y = -1f + j;
-					} else {
-						x.y = 0f;
-					}
-					
-					if(i < (i/2)+0.5) {
-						x.x = -1f + i;
-					} else if ((i / 2) + 0.5 < i) {
-						x.x = -1f + i;
-					} else {
-						x.x = 0f;
-					}
-
-					//x.x -= 0.5545906f;
-					//x.y -= -0.002623327f;
+					var x = new Vector2(1f*i, 1f*j);
 
 					positions[i, j] = x;
 				}
@@ -84,11 +67,12 @@ namespace RenzeTD.Scripts.Level {
 			for (int i = 0; i < Rows; i++) {
 				for (int j = 0; j < Columns; j++) {
 					var pos = new Vector2(j * CellSize.x + GridOffset.x, i * CellSize.y + GridOffset.y);
-					CellHolder.Holder[i].Objects.Add(Instantiate(CellObject, pos, Quaternion.identity, transform));
+					CellHolder.Holder[i].Objects.Add(Instantiate(CellObject, pos, Quaternion.identity));
 					CellHolder.Holder[i].Cells.Add(CellHolder.Holder[i].Objects[j].GetComponent<Cell>());
 					
 					CellHolder.Holder[i].Objects[j].name = $"[{i},{j}] :: {CellHolder.Holder[i].Cells[j].CellType}";
-					CellHolder.Holder[i].Objects[j].transform.position = positions[i, j] - new Vector2(3f, 3f);
+					CellHolder.Holder[i].Objects[j].transform.position = new Vector3(positions[i, j].x, positions[i, j].y) - new Vector3(4f, 4f, 1f);
+					CellHolder.Holder[i].Objects[j].transform.SetParent(transform, false);
 				}
 			}
 			

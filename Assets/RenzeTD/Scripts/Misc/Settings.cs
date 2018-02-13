@@ -1,11 +1,6 @@
 ﻿using System;
-using System.CodeDom;
-using System.Configuration;
 using System.IO;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using UnityEditor;
-using UnityEngine;
 
 namespace RenzeTD.Scripts.Misc {
     public class Settings {
