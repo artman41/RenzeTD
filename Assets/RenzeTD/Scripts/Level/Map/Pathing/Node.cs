@@ -199,7 +199,7 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
                     try {
                         next?.SetValue();
                     } catch (IndexOutOfRangeException e) {
-                        //Debug.Log(e);
+                        Debug.Log(e);
                     }
                 }
             } else {
@@ -208,7 +208,7 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
                 try {
                     next?.SetValue();
                 } catch (IndexOutOfRangeException e) {
-                    //Debug.Log(e);
+                    Debug.Log(e);
                 }
             }// -- Idea #1: iterate through each node, ended up causing an infinite loop though  */
 

@@ -35,8 +35,8 @@ namespace RenzeTD.Scripts.Misc {
                     throw new Exception();
             }
 
-            foreach (var s in SceneManager.GetAllScenes()) {
-                Debug.Log(s.name);
+            for (int i = 0; i < SceneManager.sceneCount; i++) {
+                Debug.Log($"Scene {i} :: {SceneManager.GetSceneAt(i).name}");
             }
             SceneManager.LoadScene(sceneName);
         }

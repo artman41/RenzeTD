@@ -18,7 +18,7 @@ namespace RenzeTD.Scripts.Data {
             try {
                 DontDestroyOnLoad(transform.gameObject);
             } catch (InvalidOperationException e) {
-                
+                Debug.Log(e);
             }
         }
 

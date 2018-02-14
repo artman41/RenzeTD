@@ -118,7 +118,6 @@ namespace RenzeTD.Scripts.Level {
 			for (int x = 0; x < CellHolder.Holder.Length; x++) {
 				for (int y = 0; y < CellHolder.Holder[x].Cells.Count; y++) {
 					var cell = CellHolder.Holder[x].Cells[y].GetComponent<SpriteRenderer>().sprite.texture;
-					var pixels = new Color[cellSprite.texture.width, cellSprite.texture.height];
 					for (int i = 0; i < cell.width; i++) {
 						for (int j = 0; j < cell.height; j++) {
 							tex.SetPixel(x*cellSprite.texture.width + i, y*cellSprite.texture.width + j, cell.GetPixel(i, j));
