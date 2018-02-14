@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{897A21E1-8A72-D8AC-F061-4B8B0B709696}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -57,6 +58,9 @@
     <Compile Include="Assets\RenzeTD\Scripts\Data\PreservedData.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Data\World.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Level\ClickHandler.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Level\LevelEditor\ClearHandler.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Level\LevelEditor\EditorCheck.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Level\LevelEditor\SaveHandler.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Level\Map\Cell.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Level\Map\Pathing\Node.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Level\Map\Pathing\NodePath.cs" />

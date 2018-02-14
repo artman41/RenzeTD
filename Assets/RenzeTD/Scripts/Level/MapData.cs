@@ -9,7 +9,6 @@ using RenzeTD.Scripts.Level.Map;
 using RenzeTD.Scripts.Level.Map.Pathing;
 using RenzeTD.Scripts.Misc;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace RenzeTD.Scripts.Level {
 	[DataContract]
@@ -102,7 +101,9 @@ namespace RenzeTD.Scripts.Level {
 		public void SaveMap(string name) {
 			name = name.Replace(" ", "_");
 			string json = JsonConvert.SerializeObject(this, Formatting.Indented);
-			using (var f = new StreamWriter($"{Settings.Instance.MapDirLocation}{name}/map.json")) {
+			var directory = $"{Settings.Instance.MapDirLocation}{name}";
+			Directory.CreateDirectory(directory);
+			using (var f = new StreamWriter($"{directory}/map.json")) {
 				f.Write(json);
 			}
 
@@ -140,6 +141,12 @@ namespace RenzeTD.Scripts.Level {
 				for (int j = 0; j < CellHolder.Holder[i].Cells.Count; j++) {
 					CellHolder.Holder[i].Cells[j].CellType = x.CellHolder.Holder[i].Cells[j].CellType;
 				}
+			}
+		}
+
+		public void ClearMap() {
+			foreach (var cell in CellHolder.Holder.SelectMany(o => o.Cells)) { //combine nested foreach
+				cell.CellType = Cell.Type.Empty;
 			}
 		}
 

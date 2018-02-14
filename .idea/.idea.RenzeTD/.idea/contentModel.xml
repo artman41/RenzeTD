@@ -34,6 +34,11 @@
             </e>
             <e p="Level" t="Include">
               <e p="ClickHandler.cs" t="Include" />
+              <e p="LevelEditor" t="Include">
+                <e p="ClearHandler.cs" t="Include" />
+                <e p="EditorCheck.cs" t="Include" />
+                <e p="SaveHandler.cs" t="Include" />
+              </e>
               <e p="Map" t="Include">
                 <e p="Cell.cs" t="Include" />
                 <e p="Pathing" t="Include">
