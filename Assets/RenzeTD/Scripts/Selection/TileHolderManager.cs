@@ -12,7 +12,7 @@ namespace RenzeTD.Scripts.Selection {
             foreach (var map in pd.AvailableMaps) {
                 var go = Instantiate(TileHolderPrefab);
                 go.GetComponent<TileHolder>().Map = map;
-                go.transform.parent = transform;
+                go.transform.SetParent(transform);
             }
         }
 

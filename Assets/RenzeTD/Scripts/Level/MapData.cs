@@ -9,6 +9,7 @@ using RenzeTD.Scripts.Level.Map;
 using RenzeTD.Scripts.Level.Map.Pathing;
 using RenzeTD.Scripts.Misc;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace RenzeTD.Scripts.Level {
 	[DataContract]
@@ -50,7 +51,7 @@ namespace RenzeTD.Scripts.Level {
 			CellObject.AddComponent<Cell>();
 			CellObject.AddComponent<Node>();
 			CellObject.AddComponent<RectTransform>();
-
+			CellObject.AddComponent<BoxCollider>();
 			CellHolder = new CellHolder(Rows, Columns);
 
 			var scale = transform.lossyScale;
@@ -70,9 +71,10 @@ namespace RenzeTD.Scripts.Level {
 					CellHolder.Holder[i].Objects.Add(Instantiate(CellObject, pos, Quaternion.identity));
 					CellHolder.Holder[i].Cells.Add(CellHolder.Holder[i].Objects[j].GetComponent<Cell>());
 					
-					CellHolder.Holder[i].Objects[j].name = $"[{i},{j}] :: {CellHolder.Holder[i].Cells[j].CellType}";
-					CellHolder.Holder[i].Objects[j].transform.position = new Vector3(positions[i, j].x, positions[i, j].y) - new Vector3(4f, 4f, 1f);
-					CellHolder.Holder[i].Objects[j].transform.SetParent(transform, false);
+					var go = CellHolder.Holder[i].Objects[j];
+					go.name = $"[{i},{j}] :: {CellHolder.Holder[i].Cells[j].CellType}";
+					go.transform.position = new Vector3(positions[i, j].x, positions[i, j].y) - new Vector3(4f, 4f, 1f);
+					go.transform.SetParent(transform, false);
 				}
 			}
 			
@@ -143,7 +145,7 @@ namespace RenzeTD.Scripts.Level {
 		}
 
 		private void OnDrawGizmos() {
-			Gizmos.DrawWireCube(transform.position, GridSize);
+			Gizmos.DrawWireCube(transform.position, GridSize + Vector2.one);
 		}
 
 	}

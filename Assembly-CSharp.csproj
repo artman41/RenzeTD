@@ -61,6 +61,8 @@
     <Compile Include="Assets\RenzeTD\Scripts\Level\Map\Pathing\Node.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Level\Map\Pathing\NodePath.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Level\MapData.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Level\ClickHandler.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Level\Map\Turret.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Menu\Buttons.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Menu\MapCycle.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Misc\LinqExtensions.cs" />

@@ -45,7 +45,11 @@ namespace RenzeTD.Scripts.Level.Map {
 
             transform.localScale = CellScale;
         }
-        
+
+        private void OnMouseDown() {
+            FindObjectOfType<ClickHandler>().FunctionHandler(ClickHandler.ClickType.TURRETMENU, gameObject);
+        }
+
         public enum Type {
             Empty,
             UpDown, UpLeft, UpRight, UpTJunc,
