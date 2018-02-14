@@ -43,7 +43,7 @@ namespace RenzeTD.Scripts.Level {
 		void Start () {
 			pd = FindObjectOfType<PreservedData>();
 			InitCells();
-			LoadMap(pd.SelectedMap.File);
+			if(!pd.InEditMode) LoadMap(pd.SelectedMap.File);
 		}
 
 		void InitCells() {

@@ -1,4 +1,7 @@
-﻿using RenzeTD.Scripts.Level.Map;
+﻿using System;
+using System.Linq;
+using RenzeTD.Scripts.Data;
+using RenzeTD.Scripts.Level.Map;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,11 +12,11 @@ namespace RenzeTD.Scripts.Level {
             TURRETMENU
         }
 
-        //public UnityAction<ClickType, GameObject> ActionHandler;
+        private PreservedData pd;
 
-        /*private void Start() {
-            ActionHandler += FunctionHandler;
-        }*/
+        void Start() {
+            pd = FindObjectOfType<PreservedData>();
+        }
 
         public void FunctionHandler(ClickType ct, GameObject go) {
             Debug.Log($"Handling action from ({go.name}) of type ({ct})");
@@ -32,8 +35,15 @@ namespace RenzeTD.Scripts.Level {
         }
 
         public void TurretMenu(GameObject go) {
-            var turret = go.GetComponent<Turret>();
-            if (turret == null) return;
+            if (pd.InEditMode) {
+                var c = go.GetComponent<Cell>();
+                var x = c.CellType.Next();
+                if (x == Cell.Type.Turret || x.ToString().ToLower().Contains("junc")) x = x.Next();
+                c.CellType = x;
+            } else {
+                var turret = go.GetComponent<Turret>();
+                if (turret == null) return;
+            }
             Debug.Log("Turretmenu clicked");
         }
     }

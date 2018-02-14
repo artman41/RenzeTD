@@ -12,6 +12,7 @@ namespace RenzeTD.Scripts.Data {
         public List<Map> AvailableMaps = new List<Map>();
 
         public Map SelectedMap;
+        public bool InEditMode => SelectedMap.Name == string.Empty;
 
         void Awake() {
             try {
