@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using RenzeTD.Scripts.Data;
 using RenzeTD.Scripts.Level.Map;
+using RenzeTD.Scripts.Misc;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace RenzeTD.Scripts.Level {
     public class ClickHandler : MonoBehaviour {
@@ -13,8 +17,11 @@ namespace RenzeTD.Scripts.Level {
         }
 
         private PreservedData pd;
+        public AudioClip TileEdited;
+        private AudioSource audio;
 
         void Start() {
+            audio = GetComponent<AudioSource>();
             pd = FindObjectOfType<PreservedData>();
         }
 
@@ -36,6 +43,9 @@ namespace RenzeTD.Scripts.Level {
 
         public void TurretMenu(GameObject go) {
             if (pd.InEditMode) {
+                Settings.Instance.SfxSources.Add(audio);
+                audio.clip = TileEdited;
+                audio.Play();
                 var c = go.GetComponent<Cell>();
                 var x = c.CellType.Next();
                 if (x == Cell.Type.Turret || x.ToString().ToLower().Contains("junc")) x = x.Next();

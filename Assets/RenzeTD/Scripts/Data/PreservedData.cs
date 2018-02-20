@@ -5,6 +5,7 @@ using System.Linq;
 using RenzeTD.Scripts.Misc;
 using RenzeTD.Scripts.Selection;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RenzeTD.Scripts.Data {
     [ExecuteInEditMode]
@@ -12,7 +13,15 @@ namespace RenzeTD.Scripts.Data {
         public List<Map> AvailableMaps = new List<Map>();
 
         public Map SelectedMap;
-        public bool InEditMode => SelectedMap.Name == string.Empty;
+        bool _InEditMode2 => SelectedMap.Name == string.Empty;
+
+        public TimeSpan TutorialTime;
+
+        private bool _InEditMode;
+        public bool InEditMode {
+            get { return _InEditMode || _InEditMode2; }
+            set { _InEditMode = value; }
+        }
 
         void Awake() {
             try {
@@ -44,6 +53,21 @@ namespace RenzeTD.Scripts.Data {
                         AvailableMaps.Add(m);
                     }
                 }
+            }
+        }
+
+        private void OnGUI() {
+            switch (SceneChanger.GetSceneType(SceneManager.GetActiveScene().name)) {
+                case SceneChanger.NavigationType.Menu:
+                    break;
+                case SceneChanger.NavigationType.Options:
+                    break;
+                case SceneChanger.NavigationType.Level:
+                    break;
+                case SceneChanger.NavigationType.Leaderboard:
+                    break;
+                case SceneChanger.NavigationType.MapSelect:
+                    break;
             }
         }
 

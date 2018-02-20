@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Threading.Tasks;
+using RenzeTD.Scripts.Data;
 using UnityEngine;
 
 namespace RenzeTD.Scripts.Misc {
     public class InputManager : MonoBehaviour {
 
         enum GUIType {
-            Menu,
+            Pause,
             Options
         }
         
@@ -16,14 +17,17 @@ namespace RenzeTD.Scripts.Misc {
         public Rect MenuBox;
 
         private int guiObjects;
+
+        private PreservedData pd;
         
         private void Start() {
             MenuBox = new Rect(Screen.width / 5 * 1.5f, Screen.height / 5, Screen.width / 5 * 2, Screen.height / 3 * 2);
+            pd = FindObjectOfType<PreservedData>();
         }
 
         private void Update() {
             if (Input.GetKeyDown(KeyCode.Escape)) {
-                GuiType = GUIType.Menu;
+                GuiType = GUIType.Pause;
                 showMenu ^= true;
             }
             Settings.Instance.DirtyCheck();
@@ -42,7 +46,13 @@ namespace RenzeTD.Scripts.Misc {
                 });
                 
                 switch (GuiType) {
-                    case GUIType.Menu:
+                    case GUIType.Pause:
+                        if (GUI.Button(new Rect(MenuBox.center.x - 120f,MenuBox.y + 20f * ++guiObjects, 240f, 30f), "Continue")) {
+                            showMenu ^= true;
+                        }
+
+                        GUISeparator();
+                        
                         if (GUI.Button(new Rect(MenuBox.center.x - 120f,MenuBox.y + 20f * ++guiObjects, 240f, 30f), "Main Menu")) {
                             SceneChanger.ChangeScene(SceneChanger.NavigationType.Menu);
                         }
@@ -54,9 +64,36 @@ namespace RenzeTD.Scripts.Misc {
                         }
 
                         GUISeparator();
-                
+
+                        if (!pd.InEditMode) {
+
+                            if (GUI.Button(new Rect(MenuBox.center.x - 120f, MenuBox.y + 20f * ++guiObjects, 240f, 30f),
+                                "Restart")) {
+                                SceneChanger.ChangeScene(SceneChanger.NavigationType.Level);
+                            }
+
+                            GUISeparator();
+                        }
+
                         if (GUI.Button(new Rect(MenuBox.center.x - 120f, MenuBox.y + 20f * ++guiObjects, 240f, 30f), "Exit")) {
                             Application.Quit();
+                        }
+
+                        if (!pd.InEditMode) {
+
+                            GUISeparator();
+
+                            GUISeparator();
+
+                            GUISeparator();
+
+                            if (GUI.Button(new Rect(MenuBox.center.x - 120f, MenuBox.y + 20f * ++guiObjects, 240f, 30f),
+                                "Create Map")) {
+                                showMenu ^= true;
+                                pd.SelectedMap = null;
+                                pd.InEditMode = true;
+                                SceneChanger.ChangeScene(SceneChanger.NavigationType.Level);
+                            }
                         }
 
                         break;
@@ -90,7 +127,7 @@ namespace RenzeTD.Scripts.Misc {
                         GUISeparator();
                         
                         if (GUI.Button(new Rect(MenuBox.center.x - 120f, MenuBox.y + 20f * ++guiObjects, 240f, 30f), "Back")) {
-                            GuiType = GUIType.Menu;
+                            GuiType = GUIType.Pause;
                         }
                         
                         break;

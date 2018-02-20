@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
@@ -16,6 +17,9 @@ namespace RenzeTD.Scripts.Misc {
         private float _musicVolume;
         private bool isDirty;
 
+        public List<AudioSource> MusicSources = new List<AudioSource>();
+        public List<AudioSource> SfxSources = new List<AudioSource>();
+        
         public static Settings Instance {
             get {
                 if (_Instance != null) return _Instance;
@@ -51,6 +55,7 @@ namespace RenzeTD.Scripts.Misc {
                 _musicVolume = value;
                 Debug.Log($"music vol set to {value}");
                 isDirty = true;
+                UpdateAudio();
             }
         }
 
@@ -60,7 +65,25 @@ namespace RenzeTD.Scripts.Misc {
                 _soundFxVolume = value;
                 Debug.Log($"sfx vol set to {value}");
                 isDirty = true;
+                UpdateAudio();
             }
+        }
+
+        public void UpdateAudio() {
+            MusicSources.ForEach(o => {
+                if (o == null) {
+                    MusicSources.Remove(o);
+                } else {
+                    o.volume = MusicVolume;
+                }
+            });
+            SfxSources.ForEach(o => {
+                if (o == null) {
+                    SfxSources.Remove(o);
+                } else {
+                    o.volume = SoundFXVolume;
+                }
+            });
         }
 
         static void SaveSettings() {

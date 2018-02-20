@@ -1,6 +1,6 @@
 {
-  "_soundFxVolume": 0.217105269,
-  "_musicVolume": 0.7653509,
+  "_soundFxVolume": 1.0,
+  "_musicVolume": 0.39692983,
   "TileLocation": "Game/Tiles/",
   "MapDirLocation": "Game/Maps/",
   "EnemyLocation": "Game/Settings/"
