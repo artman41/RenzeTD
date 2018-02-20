@@ -68,11 +68,13 @@
     <Compile Include="Assets\RenzeTD\Scripts\Level\MapData.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Menu\Buttons.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Menu\MapCycle.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Misc\InputManager.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Misc\LinqExtensions.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Misc\SceneChanger.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Misc\Settings.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Selection\TileHolder.cs" />
     <Compile Include="Assets\RenzeTD\Scripts\Selection\TileHolderManager.cs" />
+    <Compile Include="Assets\RenzeTD\Scripts\Turrets\WaveTurret.cs" />
     <None Include="Assets\JsonDotNet\link.xml" />
     <Reference Include="Facebook.Unity.Settings">
       <HintPath>C:/Users/Tyler/Documents/Game Files/RenzeTD/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>

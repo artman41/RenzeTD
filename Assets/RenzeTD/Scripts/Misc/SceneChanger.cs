@@ -13,7 +13,7 @@ namespace RenzeTD.Scripts.Misc {
             Leaderboard
         }
 
-        public static void ChangeScene(NavigationType nt) {
+        public static string GetSceneName(NavigationType nt) {
             string sceneName;
             switch (nt) {
                 case NavigationType.MapSelect:
@@ -34,11 +34,18 @@ namespace RenzeTD.Scripts.Misc {
                 default:
                     throw new Exception();
             }
+            return sceneName;
+        }
 
+        public static NavigationType GetSceneType(string name) {
+            return (NavigationType) Enum.Parse(typeof(NavigationType), name);
+        }
+
+        public static void ChangeScene(NavigationType nt) {
             for (int i = 0; i < SceneManager.sceneCount; i++) {
                 Debug.Log($"Scene {i} :: {SceneManager.GetSceneAt(i).name}");
             }
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene(GetSceneName(nt));
         }
     }
 }

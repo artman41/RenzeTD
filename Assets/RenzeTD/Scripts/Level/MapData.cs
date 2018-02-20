@@ -36,6 +36,11 @@ namespace RenzeTD.Scripts.Level {
 		public Vector2 GridSize => new Vector2(Rows, Columns);
 		public Vector2 CellSize => new Vector2(GridSize.x/Columns, GridSize.y/Rows);
 
+		public Node StartNode;
+		public Node EndNode;
+		
+		public NodePath Path => new NodePath(StartNode, EndNode);
+
 		private PreservedData pd;
 		
 		// Use this for initialization
@@ -81,21 +86,30 @@ namespace RenzeTD.Scripts.Level {
 		}
 
 		public void InitNodes() {
-			Node n = null;
 			for (int i = 0; i < Rows; i++) {
 				for (int j = 0; j < Columns; j++) {
-					if (n != null) {
+					if (StartNode != null) {
 						break;
 					}
 					var node = CellHolder.Holder[i].Objects[j].GetComponent<Node>();
-					n = node.Value == 0 ? node : null;
+					StartNode = node.Value == 0 ? node : null;
 				}
-				if (n != null) {
+				if (StartNode != null) {
 					break;
 				}
 			} //iterates through each node top to bottom until it reaches the start node
 
-			n?.SetValue();
+			StartNode?.SetValue();
+			Node n = StartNode;
+			
+			for (int i = 0; i < Rows; i++) {
+				for (int j = 0; j < Columns; j++) {
+					var node = CellHolder.Holder[i].Objects[j].GetComponent<Node>();
+					if (node.Value > n?.Value) n = node;
+				}
+			}
+
+			EndNode = n;
 		}
 
 		public void SaveMap(string name) {

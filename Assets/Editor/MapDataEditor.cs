@@ -28,6 +28,10 @@ namespace Editor {
             if (md.EndsOn != start) {
                 md.StartsFrom = start;
             }
+            serializedObject.Update();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("StartNode"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("EndNode"));
+            serializedObject.ApplyModifiedProperties();
             var end = (MapData.Side) EditorGUILayout.EnumPopup("Enemy End", md.EndsOn);
             if (md.StartsFrom != end) {
                 md.EndsOn = end;

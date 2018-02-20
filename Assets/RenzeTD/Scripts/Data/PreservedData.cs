@@ -46,5 +46,9 @@ namespace RenzeTD.Scripts.Data {
                 }
             }
         }
+
+        private void OnApplicationQuit() {
+            Settings.Instance.DirtyCheck();
+        }
     }
 }

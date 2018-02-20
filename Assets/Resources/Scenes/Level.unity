@@ -162,7 +162,8 @@ MonoBehaviour:
     items: 0
   StartsFrom: 0
   EndsOn: 1
-  pd: {fileID: 0}
+  StartNode: {fileID: 0}
+  EndNode: {fileID: 0}
 --- !u!114 &267585121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,6 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f10b861aa7c4bd78d3cf2b452dc1c0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isContextMenuShown: 0
+  ContextMenuPrefab: {fileID: 1279343895624590, guid: 2f502374ce9bbf541be2a4987360a842,
+    type: 2}
+  ButtonPrefab: {fileID: 1774032720770142, guid: a4a6c88da6017e844958265ade55c056,
+    type: 2}
 --- !u!1 &683200704
 GameObject:
   m_ObjectHideFlags: 0

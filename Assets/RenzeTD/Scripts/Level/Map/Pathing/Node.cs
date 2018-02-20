@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace RenzeTD.Scripts.Level.Map.Pathing {
     [RequireComponent(typeof(Cell))]
+    [Serializable]
     public class Node : MonoBehaviour {
         public List<Node> ConnectedNodes { get; set; } = new List<Node>();
         public float Folded;
@@ -253,28 +254,8 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
             } //Idea is to iterate through like in #1, but repeat till there are no missing values
   */      }
 
-        public List<Node> Pathing(Node StartNode, Node EndNode, List<Node> Visited) {
-            if (Visited.Contains(StartNode)) {
-                return null;
-            } else {
-                Visited.Add(StartNode);
-                if (StartNode == EndNode) {
-                    var tempList = new List<Node> {StartNode};
-                    return tempList;
-                } else {
-                    var tempList = StartNode.ConnectedNodes.Where(o => !Visited.Contains(o)).OrderBy(o => o.Value)
-                        .ToList();
-                    foreach (var node in tempList) {
-                        var tempList2 = Pathing(node, EndNode, Visited);
-                        if (tempList2 != null) {
-                            tempList2.Add(node);
-                            return tempList2;
-                        }
-                    }
-
-                    return null;
-                }
-            }
+        public Node[] GetNextNodes() {
+            return ConnectedNodes.Where(o => o.Value > Value).ToArray();
         }
     }
 }
