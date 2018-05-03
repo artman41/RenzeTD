@@ -1,5 +1,5 @@
 ﻿namespace RenzeTD.Scripts.Data {
-    public class World {
+    public class WorldManager {
         public int Wave;
         
     }
