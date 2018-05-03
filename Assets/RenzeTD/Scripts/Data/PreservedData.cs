@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using RenzeTD.Scripts.Enemies;
 using RenzeTD.Scripts.Misc;
 using RenzeTD.Scripts.Selection;
 using UnityEngine;
@@ -16,6 +17,18 @@ namespace RenzeTD.Scripts.Data {
         bool _InEditMode2 => SelectedMap.Name == string.Empty;
 
         public TimeSpan TutorialTime;
+
+        
+        [SerializeField]
+        private EnemyType[] _enemyCollection;
+
+        public EnemyType[] EnemyCollection {
+            get { return _enemyCollection; }
+            set {
+                if(!value.GroupBy(o => o).Where(o => o.Count()> 1).ToDictionary(o => o.Key.EnemyColour, x => x.Count()).Any(o => o.Value > 1)) _enemyCollection = value;
+                else throw new Exception();
+            }
+        }
 
         private bool _InEditMode;
         public bool InEditMode {
@@ -46,7 +59,7 @@ namespace RenzeTD.Scripts.Data {
                     try {
                         m = new Map(mDirectory);
                     } catch (FileNotFoundException e) {
-                        Debug.Log(e.Message);
+                        Debug.LogError(e.Message);
                     }
 
                     if (m != null) {
@@ -63,10 +76,11 @@ namespace RenzeTD.Scripts.Data {
                 case SceneChanger.NavigationType.Options:
                     break;
                 case SceneChanger.NavigationType.Level:
+                    //TODO: Level tutorial text
                     break;
                 case SceneChanger.NavigationType.Leaderboard:
                     break;
-                case SceneChanger.NavigationType.MapSelect:
+                case SceneChanger.NavigationType.Selection:
                     break;
             }
         }

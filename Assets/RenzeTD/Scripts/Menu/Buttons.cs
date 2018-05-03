@@ -18,6 +18,7 @@ namespace RenzeTD.Scripts.Menu {
         }
 
         public void ChangeScene(SceneChanger.NavigationType nt) {
+            if (nt == SceneChanger.NavigationType.Level) Debug.LogError($"Selected Map: {pd.SelectedMap.Name}");
             SceneChanger.ChangeScene(nt);
         }
         
@@ -26,6 +27,7 @@ namespace RenzeTD.Scripts.Menu {
         }
 
         public void MapShortcut() {
+            Debug.LogError($"Current map:: {name}");
             pd.SelectedMap = FindObjectOfType<PreservedData>().AvailableMaps
                 .Single(o => o.Name == name);
             ChangeScene(SceneChanger.NavigationType.Level);

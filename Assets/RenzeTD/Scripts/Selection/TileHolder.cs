@@ -19,6 +19,7 @@ namespace RenzeTD.Scripts.Selection {
             }
 
             name = Map.Name;
+            Debug.LogError(Map.Name);
         }
 
         void Update() {

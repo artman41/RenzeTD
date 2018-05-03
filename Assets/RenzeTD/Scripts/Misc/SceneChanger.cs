@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RenzeTD.Scripts.Data;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,7 +7,7 @@ namespace RenzeTD.Scripts.Misc {
     public static class SceneChanger {
         
         public enum NavigationType {
-            MapSelect,
+            Selection,
             Options,
             Level,
             Menu,
@@ -16,7 +17,7 @@ namespace RenzeTD.Scripts.Misc {
         public static string GetSceneName(NavigationType nt) {
             string sceneName;
             switch (nt) {
-                case NavigationType.MapSelect:
+                case NavigationType.Selection:
                     sceneName = "Selection";
                     break;
                 case NavigationType.Options:
@@ -42,6 +43,7 @@ namespace RenzeTD.Scripts.Misc {
         }
 
         public static void ChangeScene(NavigationType nt) {
+            if (nt != NavigationType.Level) GameObject.FindObjectOfType<PreservedData>().InEditMode = false;
             for (int i = 0; i < SceneManager.sceneCount; i++) {
                 Debug.Log($"Scene {i} :: {SceneManager.GetSceneAt(i).name}");
             }

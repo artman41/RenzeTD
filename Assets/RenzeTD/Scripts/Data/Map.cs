@@ -34,7 +34,7 @@ namespace RenzeTD.Scripts.Data {
             Name = dir.Name.Replace("_", " ");
             var files = dir.GetFiles().Where(o => o.Name.Replace(o.Extension, "") == "map").ToArray();
             if (files.All(o => o.Extension.ToLower() != ".json")) {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException($"No files found at {dir.FullName}");
             }
             foreach (var f in files) {
                 switch(f.Extension.ToLower()){
@@ -54,6 +54,5 @@ namespace RenzeTD.Scripts.Data {
             }
         }
     }
-            
     }
 }

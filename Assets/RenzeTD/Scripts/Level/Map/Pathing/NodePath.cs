@@ -25,5 +25,9 @@ namespace RenzeTD.Scripts.Level.Map.Pathing {
                 CurrentNode = n;
             }
         }
+
+        public Node Dequeue() {
+            return Path.Dequeue();
+        }
     }
 }

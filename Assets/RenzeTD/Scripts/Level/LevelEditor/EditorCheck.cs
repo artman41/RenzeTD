@@ -2,9 +2,15 @@
 using UnityEngine;
 
 namespace RenzeTD.Scripts.Level.LevelEditor {
-    public class EditorCheck : MonoBehaviour{
+    public class EditorCheck : MonoBehaviour {
+        public bool IsEditButtons;
+        
         private void Start() {
-            gameObject.SetActive(FindObjectOfType<PreservedData>().InEditMode);
+            if (IsEditButtons) {
+                gameObject.SetActive(FindObjectOfType<PreservedData>().InEditMode);
+            } else {
+                gameObject.SetActive(!FindObjectOfType<PreservedData>().InEditMode);
+            }
         }
     }
 }

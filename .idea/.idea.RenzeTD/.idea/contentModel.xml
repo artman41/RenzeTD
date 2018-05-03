@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\Tyler\.Rider2017.3\system\resharper-host\local\Transient\ReSharperHost\v11\SolutionCaches\_RenzeTD.203241782.00" t="ExcludeRecursive" />
-    <e p="C:\Users\Tyler\Documents\Game Files\RenzeTD" t="IncludeRecursive">
+    <e p="C:\Users\DanC\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_RenzeTD.-932149201.00" t="ExcludeRecursive" />
+    <e p="C:\Users\DanC\Documents\RenzeTD" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
@@ -26,11 +26,13 @@
         <e p="RenzeTD" t="Include">
           <e p="Scripts" t="Include">
             <e p="Data" t="Include">
-              <e p="EnemyData.cs" t="Include" />
               <e p="Map.cs" t="Include" />
-              <e p="Player.cs" t="Include" />
               <e p="PreservedData.cs" t="Include" />
-              <e p="World.cs" t="Include" />
+              <e p="WorldManager.cs" t="Include" />
+            </e>
+            <e p="Enemies" t="Include">
+              <e p="Enemy.cs" t="Include" />
+              <e p="EnemyType.cs" t="Include" />
             </e>
             <e p="Level" t="Include">
               <e p="ClickHandler.cs" t="Include" />
@@ -48,12 +50,18 @@
                 <e p="Turret.cs" t="Include" />
               </e>
               <e p="MapData.cs" t="Include" />
+              <e p="Wave" t="Include">
+                <e p="EnemySpawner.cs" t="Include" />
+                <e p="StartHandler.cs" t="Include" />
+                <e p="WaveManager.cs" t="Include" />
+              </e>
             </e>
             <e p="Menu" t="Include">
               <e p="Buttons.cs" t="Include" />
               <e p="MapCycle.cs" t="Include" />
             </e>
             <e p="Misc" t="Include">
+              <e p="InputManager.cs" t="Include" />
               <e p="LinqExtensions.cs" t="Include" />
               <e p="SceneChanger.cs" t="Include" />
               <e p="Settings.cs" t="Include" />
@@ -62,6 +70,9 @@
               <e p="TileHolder.cs" t="Include" />
               <e p="TileHolderManager.cs" t="Include" />
             </e>
+            <e p="Turrets" t="Include">
+              <e p="WaveTurret.cs" t="Include" />
+            </e>
           </e>
         </e>
       </e>
@@ -69,9 +80,7 @@
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="RenzeTD.sln" t="IncludeFlat" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
   <component name="RiderRiderContentModelStore">

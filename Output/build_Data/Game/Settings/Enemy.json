@@ -1,0 +1,158 @@
+{
+  "Enemies": [
+    {
+      "Type": 0,
+      "_Colours": [
+        {
+          "Item1": 1.0,
+          "Item2": 0.0,
+          "Item3": 0.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 1,
+      "Speed": 0.1
+    },
+    {
+      "Type": 1,
+      "_Colours": [
+        {
+          "Item1": 0.0,
+          "Item2": 0.0,
+          "Item3": 1.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 2,
+      "Speed": 0.2
+    },
+    {
+      "Type": 2,
+      "_Colours": [
+        {
+          "Item1": 0.0,
+          "Item2": 1.0,
+          "Item3": 0.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 3,
+      "Speed": 0.3
+    },
+    {
+      "Type": 3,
+      "_Colours": [
+        {
+          "Item1": 1.0,
+          "Item2": 0.921568632,
+          "Item3": 0.0156862754,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 4,
+      "Speed": 0.4
+    },
+    {
+      "Type": 4,
+      "_Colours": [
+        {
+          "Item1": 1.0,
+          "Item2": 1.0,
+          "Item3": 1.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 5,
+      "Speed": 0.5
+    },
+    {
+      "Type": 5,
+      "_Colours": [
+        {
+          "Item1": 0.0,
+          "Item2": 0.0,
+          "Item3": 0.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 6,
+      "Speed": 0.6
+    },
+    {
+      "Type": 4,
+      "_Colours": [
+        {
+          "Item1": 1.0,
+          "Item2": 0.0,
+          "Item3": 0.0,
+          "Item4": 1.0
+        },
+        {
+          "Item1": 1.0,
+          "Item2": 1.0,
+          "Item3": 1.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 7,
+      "Speed": 0.7
+    },
+    {
+      "Type": 5,
+      "_Colours": [
+        {
+          "Item1": 0.0,
+          "Item2": 0.0,
+          "Item3": 1.0,
+          "Item4": 1.0
+        },
+        {
+          "Item1": 0.0,
+          "Item2": 0.0,
+          "Item3": 0.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 8,
+      "Speed": 0.8
+    },
+    {
+      "Type": 6,
+      "_Colours": [
+        {
+          "Item1": 0.0,
+          "Item2": 1.0,
+          "Item3": 0.0,
+          "Item4": 1.0
+        },
+        {
+          "Item1": 1.0,
+          "Item2": 1.0,
+          "Item3": 1.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 9,
+      "Speed": 0.9
+    },
+    {
+      "Type": 7,
+      "_Colours": [
+        {
+          "Item1": 1.0,
+          "Item2": 0.921568632,
+          "Item3": 0.0156862754,
+          "Item4": 1.0
+        },
+        {
+          "Item1": 0.0,
+          "Item2": 0.0,
+          "Item3": 0.0,
+          "Item4": 1.0
+        }
+      ],
+      "Health": 10,
+      "Speed": 1.0
+    }
+  ]
+}

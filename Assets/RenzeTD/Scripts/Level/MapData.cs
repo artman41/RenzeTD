@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using RenzeTD.Scripts.Data;
 using RenzeTD.Scripts.Level.Map;
 using RenzeTD.Scripts.Level.Map.Pathing;
+using RenzeTD.Scripts.Level.Wave;
 using RenzeTD.Scripts.Misc;
 using UnityEngine;
 
@@ -21,11 +22,13 @@ namespace RenzeTD.Scripts.Level {
 		
 		//Grid Specifications
 		[DataMember]
-		public int Rows;
+		public int Rows = 9;
 		[DataMember]
-		public int Columns;
+		public int Columns = 9;
 		[DataMember]
-		public Vector2 GridOffset;
+		public int StartingMoney = 100;
+		[DataMember]
+		public Vector2 GridOffset = Vector2.zero;
 		[DataMember]
 		public CellHolder CellHolder;
 		[DataMember]
@@ -41,13 +44,31 @@ namespace RenzeTD.Scripts.Level {
 		
 		public NodePath Path => new NodePath(StartNode, EndNode);
 
-		private PreservedData pd;
+		private PreservedData pd = null;
+		private WorldManager wm = null;
+		private EnemySpawner es = null;
+
+		private bool esCreated;
 		
 		// Use this for initialization
 		void Start () {
 			pd = FindObjectOfType<PreservedData>();
+			wm = FindObjectOfType<WorldManager>();
+            es = FindObjectOfType<EnemySpawner>();
+            Debug.LogError($"PREDATA FOUND:: {pd != null}");
+			InitWorld();
 			InitCells();
 			if(!pd.InEditMode) LoadMap(pd.SelectedMap.File);
+		}
+
+		void InitWorld() {
+			wm.Health = 100;
+			try {
+				wm.Killed.Clear();
+			} catch (NullReferenceException e) {
+				Debug.Log(e.Message);
+			}
+			wm.Money = StartingMoney;
 		}
 
 		void InitCells() {
@@ -77,9 +98,9 @@ namespace RenzeTD.Scripts.Level {
 					
 					var go = CellHolder.Holder[i].Objects[j];
 					go.name = $"[{i},{j}] :: {CellHolder.Holder[i].Cells[j].CellType}";
-					go.transform.position = new Vector3(positions[i, j].x, positions[i, j].y) - new Vector3(4f, 4f, 1f);
-					go.transform.SetParent(transform, false);
-				}
+                    go.transform.SetParent(transform, false);
+                    go.transform.localPosition = new Vector3(positions[i, j].x, positions[i, j].y) - new Vector3(4f, 4f, 1f);
+                }
 			}
 			
 			Destroy(CellObject);
@@ -98,6 +119,17 @@ namespace RenzeTD.Scripts.Level {
 					break;
 				}
 			} //iterates through each node top to bottom until it reaches the start node
+
+			if (!esCreated) {
+				var g = new GameObject();
+				es = g.AddComponent<EnemySpawner>();
+				g.AddComponent<RectTransform>();
+				var go = Instantiate(g);
+				go.name = "Enemy Spawner";
+				go.transform.position = StartNode.transform.position + new Vector3(0f, 1f);
+				Destroy(g);
+				esCreated = true;
+			}
 
 			StartNode?.SetValue();
 			Node n = StartNode;

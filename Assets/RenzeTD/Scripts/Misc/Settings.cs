@@ -8,7 +8,9 @@ using UnityEngine;
 namespace RenzeTD.Scripts.Misc {
     [DataContract]
     public class Settings {
-        static readonly string SettingsLocation = "Game/Settings/";
+        static readonly string GameDir = Application.isEditor ? "Game/" : "build_Data/Game/";
+        
+        static readonly string SettingsLocation = $"{GameDir}Settings/";
         
         private static Settings _Instance;
         [DataMember]
@@ -37,24 +39,23 @@ namespace RenzeTD.Scripts.Misc {
 
         public Settings() {
             Directory.CreateDirectory(MapDirLocation);
-            Directory.CreateDirectory(EnemyLocation);
+            //Directory.CreateDirectory(EnemyLocation);
+            //TODO: Custom Enemies
             _musicVolume = 1f;
             _soundFxVolume = 1f;
         }
         
         [DataMember]
-        public string TileLocation { get; } = "Game/Tiles/";
+        public string MapDirLocation { get; } = $"{GameDir}Maps/";
         [DataMember]
-        public string MapDirLocation { get; } = "Game/Maps/";
-        [DataMember]
-        public string EnemyLocation { get; } = "Game/Settings/";
+        public string EnemyLocation { get; } = $"{GameDir}Settings/";
 
         public float MusicVolume {
             get { return _musicVolume; }
             set {
                 _musicVolume = value;
                 Debug.Log($"music vol set to {value}");
-                isDirty = true;
+                SetDirty(true);
                 UpdateAudio();
             }
         }
@@ -64,12 +65,12 @@ namespace RenzeTD.Scripts.Misc {
             set {
                 _soundFxVolume = value;
                 Debug.Log($"sfx vol set to {value}");
-                isDirty = true;
+                SetDirty(true);
                 UpdateAudio();
             }
         }
 
-        public void UpdateAudio() {
+        void UpdateAudio() {
             MusicSources.ForEach(o => {
                 if (o == null) {
                     MusicSources.Remove(o);
@@ -96,8 +97,13 @@ namespace RenzeTD.Scripts.Misc {
         public void DirtyCheck() {
             if (isDirty) {
                 SaveSettings();
-                isDirty = false;
+                SetDirty(false);
             }
+        }
+
+        bool SetDirty(bool b) {
+            isDirty = b;
+            return isDirty;
         }
     }
 }
