@@ -2,15 +2,12 @@
 
 namespace RenzeTD.Scripts.Turrets {
 	public class WaveTurret : MonoBehaviour {
-		private int i;
-
-		private void Start() {
-			i = 0;
-		}
 		
+		/// <summary>
+		/// Triggers when the Turret animation hits a certain keyframe
+		/// </summary>
 		void DoAttack() {
-			Debug.Log($"Attack {i}");
-			i++;
+			Debug.Log($"Attack");
 		}
 	}
 }
